@@ -24,7 +24,7 @@ CREATE TABLE hospital.patient (
     "PHONE_NUMBER"   VARCHAR2(20 BYTE)
 );
 
-CREATE TABLE stay (
+CREATE TABLE hospital.stay (
     "ADMISSION_ID"   NUMBER(8,0),
     "START_DATE"     DATE DEFAULT ( SYSDATE ),
     "END_DATE"       DATE
@@ -99,9 +99,9 @@ CREATE TABLE physician (
 
 CREATE TABLE treatment (
     physician_id   NUMBER(3,0) NOT NULL,
-        CONSTRAINT phy_fk
-            REFERENCES hospital.physician ( physician_id )
+    constraint     phy_fk
+        REFERENCES hospital.physician ( physician_id ),
     procedure_id   NUMBER(3,0) NOT NULL,
-        CONSTRAINT phy_fk
-            REFERENCES hospital.physician ( physician_id )
+    constraint     phy_fk
+        REFERENCES hospital.procedure ( procedure_id )
 );
