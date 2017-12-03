@@ -12,3 +12,4 @@ CREATE USER hospital IDENTIFIED BY password1
     TEMPORARY TABLESPACE hospital_temp
 QUOTA 20 M ON hospital_db;
 
+
