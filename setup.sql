@@ -7,7 +7,3 @@
 @insert_nurses.sql;
 @insert_physician.sql;
 @insert_operations.sql;
-
-
-
-
