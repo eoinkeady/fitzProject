@@ -13,5 +13,8 @@ Drop tablespace hospital_db including contents and datafiles;
 @insert_operations.sql;
 @insert_rooms.sql;
 @insert_appointments.sql;
+@insert_prescriptions.sql;
+@insert_stay.sql;
+@insert_treatment.sql;
 @create_package.sql;
 

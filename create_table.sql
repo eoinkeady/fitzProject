@@ -34,13 +34,12 @@ CREATE TABLE hospital.nurse (
             REFERENCES hospital.ward ( ward_id )
 );
 
-
 CREATE TABLE hospital.physician (
-    physician_id     NUMBER(3,0)
+    physician_id   NUMBER(3,0)
         CONSTRAINT physician_pk PRIMARY KEY,
-    first_name       VARCHAR(20) NOT NULL,
-    last_name        VARCHAR(25) NOT NULL,
-    ward_id   NUMBER(5,0) NOT NULL
+    first_name     VARCHAR(20) NOT NULL,
+    last_name      VARCHAR(25) NOT NULL,
+    ward_id        NUMBER(5,0) NOT NULL
         CONSTRAINT ward_phy_fk
             REFERENCES hospital.ward ( ward_id )
 );
@@ -58,7 +57,11 @@ CREATE TABLE hospital.treatment (
             REFERENCES hospital.physician ( physician_id ),
     operation_id   NUMBER(3,0) NOT NULL
         CONSTRAINT op_fk
-            REFERENCES hospital.operation ( operation_id )
+            REFERENCES hospital.operation ( operation_id ),
+    patient_id     NUMBER(6,0) NOT NULL
+        CONSTRAINT treatment_pat_fk
+            REFERENCES hospital.patient ( patient_id ),
+    start_date     DATE
 );
 
 CREATE TABLE hospital.drug (
@@ -76,7 +79,8 @@ CREATE TABLE hospital.prescription (
     drug_id           NUMBER(8,0)
         CONSTRAINT drug_fk
             REFERENCES hospital.drug ( drug_id ),
-    dose              VARCHAR2(32)
+    dose              VARCHAR2(32),
+    end_date          DATE
 );
 
 CREATE TABLE hospital.appointment (
@@ -102,5 +106,6 @@ CREATE TABLE hospital.stay (
     room_id        NUMBER(6,0) NOT NULL,
     patient_id     NUMBER(6,0)
         CONSTRAINT adm_pat_fk
-            REFERENCES hospital.patient ( patient_id )
+            REFERENCES hospital.patient ( patient_id ),
+    CONSTRAINT check_dates CHECK ( start_date < end_date )
 );
