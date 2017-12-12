@@ -1,3 +1,7 @@
+-- Sample operation data
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 INSERT INTO HOSPITAL.OPERATION (PROCEDURE_NAME, DESCRIPTION) VALUES('Heart Transplant', 'replace heart and put in new one');
 INSERT INTO HOSPITAL.OPERATION (PROCEDURE_NAME, DESCRIPTION) VALUES('lung Transplant', 'replace lung and put in new one');
 INSERT INTO HOSPITAL.OPERATION (PROCEDURE_NAME, DESCRIPTION) VALUES('Kidney Transplant', 'replace kidney and put in new one');

@@ -1,3 +1,7 @@
+-- These sequences handle all the primary keys in each table
+-- Author: eoin.keady@gmail.com
+-- Date: 03-Dec-2017
+
 CREATE SEQUENCE hospital.patient_id_sequence START WITH 1;
 
 CREATE SEQUENCE hospital.appointment_id_sequence START WITH 1;

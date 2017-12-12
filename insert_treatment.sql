@@ -1,3 +1,7 @@
+-- Inserting a few sample treatments.
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 insert into hospital.treatment values(44, 1, 21, Date '2017-12-11');
 insert into hospital.treatment values(12, 2, 26, Date '2017-12-11');
 insert into hospital.treatment values(23, 3, 30, Date '2017-12-11');

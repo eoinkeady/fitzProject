@@ -1,3 +1,7 @@
+-- Sample patient data
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 INSERT INTO hospital.patient (first_name,last_name,email,phone_number) VALUES ('Yoshio','Mcclain','nonummy.ipsum@Uttincidunt.co.uk','2372267068');
 INSERT INTO hospital.patient (first_name,last_name,email,phone_number) VALUES('Edward','Contreras','interdum.enim.non@mi.ca','5088962901');
 INSERT INTO hospital.patient (first_name,last_name,email,phone_number) VALUES ('Abel','Deleon','Sed@gravidaAliquamtincidunt.edu','0095779323');

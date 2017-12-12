@@ -1,3 +1,7 @@
+-- Sample physician data
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 Insert into HOSPITAL.PHYSICIAN (FIRST_NAME,LAST_NAME,WARD_ID) values ('Homer','Simpson',1);
 Insert into HOSPITAL.PHYSICIAN (FIRST_NAME,LAST_NAME,WARD_ID) values ('Steven','Woodward',1);
 Insert into HOSPITAL.PHYSICIAN (FIRST_NAME,LAST_NAME,WARD_ID) values ('Jillian','Spears',1);

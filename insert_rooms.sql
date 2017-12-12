@@ -1,3 +1,7 @@
+-- sample rooms
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 Insert into hospital.room (floor_number, ward_id) Values (1, 1);
 Insert into hospital.room (floor_number, ward_id) Values (1, 1);
 Insert into hospital.room (floor_number, ward_id) Values (1, 1);

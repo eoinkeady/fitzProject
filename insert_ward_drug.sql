@@ -1,3 +1,7 @@
+-- Sample drugs and wards
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 insert into hospital.drug (DRUG_NAME) values('Panadol');
 insert into hospital.drug (DRUG_NAME) values('Nurofen');
 insert into hospital.drug (DRUG_NAME) values('Solpadine');

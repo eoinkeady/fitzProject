@@ -1,3 +1,7 @@
+-- Sample prescription data
+-- Author: eoin.keady@gmail.com
+-- Date: 09-Dec-2017
+
 insert into hospital.prescription(patient_id, drug_id, dose, end_date) values(50, 3, 'Take 4 times a week', Date '2017-01-23');
 insert into hospital.prescription(patient_id, drug_id, dose, end_date) values(10, 1, 'Take three tablets 4 times a day', Date '2017-01-12');
 insert into hospital.prescription(patient_id, drug_id, dose, end_date) values(12, 2, '5 times a ', Date '2017-01-24');
