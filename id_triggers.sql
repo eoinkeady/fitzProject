@@ -1,3 +1,9 @@
+-- These triggers all ensure that the primary key for each table is 
+-- taken from the table's approptiate sequence
+--sequences can be located in sequences.sql
+-- Author: eoin.keady@gmail.com
+-- Date: 09-Dec-2017
+
 CREATE OR REPLACE TRIGGER hospital.update_appointment BEFORE
     INSERT ON hospital.appointment
     FOR EACH ROW

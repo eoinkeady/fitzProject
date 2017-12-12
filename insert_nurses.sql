@@ -1,3 +1,7 @@
+-- Insert some nurses
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 INSERT INTO hospital.nurse (first_name,last_name, ward_id) VALUES ('Christian','Ratliff', 1);
 INSERT INTO hospital.nurse (first_name,last_name, ward_id) VALUES ('Remedios','Tyler', 1);
 INSERT INTO hospital.nurse (first_name,last_name, ward_id) VALUES ('Ruby','Witt', 1);

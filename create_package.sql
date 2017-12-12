@@ -1,29 +1,34 @@
-CREATE OR REPLACE PACKAGE hospital.appointments_pack 
-    -- Declare package components.
-    -- Author: eoin.keady@gmail.com
-    -- Date: 09-Dec-2017
-    -- Procedures to add and check appointments
-    
-    AUTHID current_user IS
-    
-     PROCEDURE check_appointments (
-        first_date VARCHAR2,
-        second_date VARCHAR2,
+-- Declare package components.
+-- Author: eoin.keady@gmail.com
+-- Date: 09-Dec-2017
+CREATE OR REPLACE PACKAGE hospital.data_pack AUTHID current_user IS
+    PROCEDURE check_appointments (
+        first_date    VARCHAR2,
+        second_date   VARCHAR2,
         doc_id        physician.physician_id%TYPE
     );
-    
+
     PROCEDURE make_appointment (
         pat_id        IN patient.patient_id%TYPE,
         doc_id        IN physician.physician_id%TYPE,
         app_date      IN VARCHAR2,
         room_number   IN room.room_id%TYPE
     );
+
+    FUNCTION count_nurses_in_ward (
+        wardid ward.ward_id%TYPE
+    ) RETURN NUMBER;
+
+    FUNCTION count_patients_in_ward (
+        wardid ward.ward_id%TYPE
+    ) RETURN NUMBER;
+
 END;
 /
-CREATE OR REPLACE PACKAGE BODY hospital.appointments_pack IS
-    -- Author: eoin.keady@gmail.com
-    -- Date: 09-Dec-2017
-    -- Procedures to add and check appointments
+
+CREATE OR REPLACE PACKAGE BODY hospital.data_pack IS
+
+--this procedure takes two dates and a doctor ID and returns any appointments between those two dates
 
     PROCEDURE check_appointments (
         first_date    VARCHAR2,
@@ -33,7 +38,12 @@ CREATE OR REPLACE PACKAGE BODY hospital.appointments_pack IS
         IS
     BEGIN
         dbms_output.put_line('These are all future appointments for Physician ID: '
-        || doc_id || ' between ' || first_date || ' and ' || second_date);
+        || doc_id
+        || ' between '
+        || first_date
+        || ' and '
+        || second_date);
+
         FOR app_cursor IN (
             SELECT
                 p.first_name,
@@ -53,9 +63,11 @@ CREATE OR REPLACE PACKAGE BODY hospital.appointments_pack IS
             || ' '
             || app_cursor.start_date);
         END LOOP;
+
     END;
 
     --this procedure takes 4 paramaters and creates an appointment with the date supplied
+
     PROCEDURE make_appointment (
         pat_id        IN patient.patient_id%TYPE,
         doc_id        IN physician.physician_id%TYPE,
@@ -80,9 +92,64 @@ CREATE OR REPLACE PACKAGE BODY hospital.appointments_pack IS
         WHEN OTHERS THEN
             dbms_output.put_line('Issue with creating the appointment');
     END;
+    
+    
+--This function takes a ward ID and returns the amount of nurses working in that ward
+    FUNCTION count_nurses_in_ward (
+        wardid ward.ward_id%TYPE
+    ) RETURN NUMBER IS
+        nurse_count   NUMBER(3);
+    BEGIN
+        SELECT
+            COUNT(nurse_id)
+        INTO
+            nurse_count
+        FROM
+            hospital.nurse
+        WHERE
+            ward_id = wardid;
+
+        RETURN nurse_count;
+    END;
+    
+    
+--This function takes the ward ID and returns the number of patients curently staying in this ward
+
+    FUNCTION count_patients_in_ward (
+        wardid ward.ward_id%TYPE
+    ) RETURN NUMBER IS
+        pat_count   NUMBER(6);
+    BEGIN
+        SELECT
+            COUNT(patient_id)
+        INTO
+            pat_count
+        FROM
+            (
+                SELECT
+                    *
+                FROM
+                    hospital.stay s
+                    JOIN (
+                        SELECT
+                            r.room_id,
+                            w.ward_id
+                        FROM
+                            hospital.room r
+                            JOIN hospital.ward w ON ( r.ward_id = w.ward_id )
+                    ) pr ON ( s.room_id = pr.room_id )
+                    --this WHERE clause is to ensure that the patient is currently in that ward
+                WHERE
+                    (
+                        ( s.end_date > SYSDATE )
+                        OR    ( s.end_date IS NULL )
+                    )
+                    AND   ( s.start_date < SYSDATE )
+            )
+        WHERE
+            ward_id = wardid;
+
+        RETURN pat_count;
+    END;
 
 END;
-
-
-
-

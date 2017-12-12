@@ -1,3 +1,6 @@
+-- Create Table statements
+-- Author: eoin.keady@gmail.com
+-- Date: 01-Dec-2017
 CREATE TABLE hospital.patient (
     patient_id     NUMBER(6,0)
         CONSTRAINT pat_pk PRIMARY KEY,
@@ -107,5 +110,6 @@ CREATE TABLE hospital.stay (
     patient_id     NUMBER(6,0)
         CONSTRAINT adm_pat_fk
             REFERENCES hospital.patient ( patient_id ),
+    --Adding a constraint so that the end date of a stay can't be before the start date
     CONSTRAINT check_dates CHECK ( start_date < end_date )
 );

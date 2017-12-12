@@ -1,3 +1,7 @@
+-- Insert some sample appointments
+-- Author: eoin.keady@gmail.com
+-- Date: 02-Dec-2017
+
 insert into hospital.appointment (PATIENT_ID, PHYSICIAN_ID, START_DATE, ROOM_ID) values (1, 1, DATE '2017-12-04', 1);
 insert into hospital.appointment (PATIENT_ID, PHYSICIAN_ID, START_DATE, ROOM_ID) values (2, 1, DATE '2017-12-05', 2);
 insert into hospital.appointment (PATIENT_ID, PHYSICIAN_ID, START_DATE, ROOM_ID) values (3, 1, DATE '2017-12-06', 3);

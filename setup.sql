@@ -1,3 +1,8 @@
+--Just run all the statements with the @ annotation to setup the database.
+--I included the drop user and tablespace calls in case you want to remove them
+-- Author: eoin.keady@gmail.com
+-- Date: 09-Dec-2017
+
 Drop user hospital cascade;
 Drop tablespace hospital_db including contents and datafiles;
 
