@@ -6,10 +6,10 @@
 
 Drop user hospital cascade;
 Drop tablespace hospital_db including contents and datafiles;
-drop role guest_role;
-drop role user_role;
-drop user guest;
-drop user fullUser;
+Drop role guest_role;
+Drop role user_role;
+Drop user guest;
+Drop user fullUser;
 
 
 @create_tablespace.sql;
