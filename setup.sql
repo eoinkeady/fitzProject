@@ -1,16 +1,23 @@
---Just run all the statements with the @ annotation to setup the database.
---I included the drop user and tablespace calls in case you want to remove them
+-- Just run all the statements with the @ annotation to setup the database.
+-- I included the drop user and tablespace calls in case you want to remove
+-- them and install the database again.
 -- Author: eoin.keady@gmail.com
 -- Date: 09-Dec-2017
 
 Drop user hospital cascade;
 Drop tablespace hospital_db including contents and datafiles;
+drop role guest_role;
+drop role user_role;
+drop user guest;
+drop user fullUser;
+
 
 @create_tablespace.sql;
 @create_user_hosiptal.sql;
 @create_table.sql;
 @sequences.sql;
 @id_triggers.sql;
+@roles_and_users.sql
 @insert_patient.sql;
 @insert_ward_drug.sql;
 @insert_nurses.sql;
@@ -22,4 +29,5 @@ Drop tablespace hospital_db including contents and datafiles;
 @insert_stay.sql;
 @insert_treatment.sql;
 @create_package.sql;
+
 
