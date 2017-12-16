@@ -73,4 +73,10 @@ create_view.sql - Creates a view of all the patients currently staying in the ho
 call_functions_example.sql - Sample function call.
 call_perocedures_example.sql - Sample procedure call.
 
+## Authors
+
+* **Eoin Keady**
+* eoin.keady@gmail.com
+* 0879306420
+
 
