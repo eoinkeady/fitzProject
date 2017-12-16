@@ -29,5 +29,6 @@ Drop user fullUser;
 @insert_stay.sql;
 @insert_treatment.sql;
 @create_package.sql;
+@create_view.sql;
 
 
